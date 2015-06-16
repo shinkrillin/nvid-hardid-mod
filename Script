@@ -1,24 +1,30 @@
 Const ForReading = 1
 Const ForWriting = 2
 
+myString1=InputBox("Enter first old hardware ID")
+myString2=InputBox("Enter first new hardware ID")
+myString3=InputBox("Enter second old hardware ID")
+myString4=InputBox("Enter second new hardware ID")
+myString5=InputBox("Enter complete file path and name of config file to be modified")
+
 Set objFSO = CreateObject("Scripting.FileSystemObject")
-Set objFile = objFSO.OpenTextFile("C:\Scripts\Text.txt", ForReading)
+Set objFile = objFSO.OpenTextFile(myString5, ForReading)
 
 strText = objFile.ReadAll
 objFile.Close
-strNewText = Replace(strText, "hdwid1", "hdwid2")
+strNewText = Replace(strText, myString1, myString2)
 
-Set objFile = objFSO.OpenTextFile("C:\Scripts\Text.txt", ForWriting)
+Set objFile = objFSO.OpenTextFile(myString5, ForWriting)
 objFile.WriteLine strNewText
 objFile.Close
 
 Set objFSO = CreateObject("Scripting.FileSystemObject")
-Set objFile = objFSO.OpenTextFile("C:\Scripts\Text.txt", ForReading)
+Set objFile = objFSO.OpenTextFile(myString5, ForReading)
 
 strText = objFile.ReadAll
 objFile.Close
-strNewText = Replace(strText, "hdwid3", "hdwid4")
+strNewText = Replace(strText, myString3, myString4)
 
-Set objFile = objFSO.OpenTextFile("C:\Scripts\Text.txt", ForWriting)
+Set objFile = objFSO.OpenTextFile(myString5, ForWriting)
 objFile.WriteLine strNewText
 objFile.Close
